@@ -1,0 +1,1 @@
+Cela a prit --> 0.00018191337585449s pour copier coller les fichier d'un repertoire a un autre
