@@ -12,7 +12,7 @@
             {
                 $base = new PDO('mysql:host=127.0.0.1;dbname=uber_tkt', 'root', 'root');
                 $base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-                $sql = "SELECT prix , plat.id_type_nourriture , plat.id_type_plat , plat.id_origine , poids , prix , plat.id_plat , origine.libelle AS libelle_origine , type_plat.libelle AS libelle_type_plat , type_nourriture.libelle AS libelle_type_nourriture , plat.libelle FROM plat INNER JOIN origine ON plat.id_origine = origine.id_origine INNER JOIN type_plat ON plat.id_type_plat = type_plat.id_type_plat INNER JOIN type_nourriture ON plat.id_type_nourriture = type_nourriture.id_type_nourriture WHERE prix <= ? AND prix >= ? AND plat.id_type_nourriture = ? AND plat.id_type_plat = ? AND plat.id_origine = ?";
+                $sql = "SELECT plat.id_plat , prix , plat.id_type_nourriture , plat.id_type_plat , plat.id_origine , poids , prix , plat.id_plat , origine.libelle AS libelle_origine , type_plat.libelle AS libelle_type_plat , type_nourriture.libelle AS libelle_type_nourriture , plat.libelle FROM plat INNER JOIN origine ON plat.id_origine = origine.id_origine INNER JOIN type_plat ON plat.id_type_plat = type_plat.id_type_plat INNER JOIN type_nourriture ON plat.id_type_nourriture = type_nourriture.id_type_nourriture WHERE prix <= ? AND prix >= ? AND plat.id_type_nourriture = ? AND plat.id_type_plat = ? AND plat.id_origine = ?";
                 // Préparation de la requête avec les marqueurs
                 $resultat = $base->prepare($sql);
                 $resultat->execute(array($_POST['prix_mini'],$_POST['prix_maxi'],$_POST['categorie_plat'],$_POST['type_plat'],$_POST['origine']));
@@ -25,7 +25,20 @@
                         echo '<p>'.$ligne["libelle_type_plat"].'</p>';
                         echo '<p>'.$ligne["poids"].'</p>';
                         echo '<p>'.$ligne["libelle_origine"].'</p>';
-                        //echo '<p>'.$ligne["Ingredient"].'</p>';
+                        echo '<p>';
+                        $sql2 = "SELECT plat_ingredient.id_ingredient , ingredient.libelle AS libelle_ingredient FROM Ingredient INNER JOIN plat_ingredient ON ingredient.id_ingredient = plat_ingredient.id_ingredient WHERE plat_ingredient.id_plat = ?";
+                        // Préparation de la requête avec les marqueurs
+                        $resultat2 = $base->prepare($sql2);
+                        $resultat2->execute(array($ligne['id_plat']));
+                        while ($ligne2 = $resultat2->fetch()) {
+                            
+                                
+                                echo $ligne2["libelle_ingredient"].", " ;
+                                
+    
+                            
+                        }
+                        echo '</p>';
                     echo '</div>';
                 }
                 
