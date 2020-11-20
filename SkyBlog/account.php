@@ -7,6 +7,9 @@
     <title>Account</title>
 </head>
 <body>
+    <h1>SkyBlog</h1>
+    <h2>Votre compte</h2>
+    <p><a href="./index.php">Retournez au menu</a></p>
     <?php
         // On recupere l'id de la session 
         session_start();
@@ -26,9 +29,23 @@
                             echo "<h3>".$ligne["Titre"]."</h3>";
                             echo "<h4>@".$ligne["Identifiant"]."</h4>";
                             echo "<p>".$ligne["Commentaire"]."</p>";
-                            echo "<p><i>".$ligne["post_date"]."</i></p>";
                             echo "<img src='./Image/".$ligne["Id_post"].$ligne["Libelle_Image"]."'></img>";
+                            echo "<p><i>".$ligne["post_date"]."</i></p>";
+                            // si on est coonecter on peux modifier les post et les supprimer
+                            if (isset($_SESSION["id_personne"])) {
+                                if ($ligne['id_utilisateur'] == $_SESSION["id_personne"]) {
+                                    echo '<form action="modif.php" method="POST" name="formulaire">';
+                                        echo '<input type="hidden" name="id_post" value="'.$ligne["Id_post"].'"/>';
+                                        echo '<button type="submit" name="ok" value="envoyer"> modifier </button>';
+                                    echo '</form>';
+                                    echo '<form action="supprimer.php" method="POST" name="formulaire">';
+                                        echo '<input type="hidden" name="id_post" value="'.$ligne["Id_post"].'"/>';
+                                        echo '<button type="submit" name="ok" value="envoyer"> Supprimer </button>';
+                                    echo '</form>';
+                                }
+                            }
                         echo '</div>';
+                        
                     }
                     $resultat->closeCursor();
                 }

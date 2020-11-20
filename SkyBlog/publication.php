@@ -7,8 +7,10 @@
     <title>Publiez</title>
 </head>
 <body>
+    <h1>SkyBlog</h1>
+    <h2>Publiez un post ! </h2>
+    <p><a href="./index.php">Retournez au menu</a></p>
     <!-- Formulaire de publication  -->
-    <h1>Publiez un post ! </h1>
     <form action="verif_publication.php" method="POST" name="formulaire" enctype="multipart/form-data">
         <input type="text" name="Titre" placeholder="Titre du post"/>
         <input type="text" name="Commentaire" placeholder="Commentaire du post"/>

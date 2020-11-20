@@ -12,11 +12,12 @@
     <?php
             //session start pour avoir l'id du compte
             session_start();
+            include 'include.php';
             //si la personne est connecter alros on affiche le lien pour voir son compte et tous ses poste ainsi qu'un bouton pour poster
             if (isset($_SESSION['id_personne'])) {
+                //Requete pour recuperer le nom du compte et si on est connecter sa affiche le bouton accedez a votre compte publiez un poste et se decconnecter
                 try
                 {
-                    include 'include.php';
                     $sql = "SELECT Id_Login , Identifiant FROM login_passeword WHERE Id_Login = ?";
                     // Préparation de la requête avec les marqueurs
                     $resultat = $base->prepare($sql);
@@ -42,7 +43,7 @@
             }else { //sinon on affiche le bouton pour aller a la page se connecter 
                 echo '<a href="./login.php"> Se connecter</a>';
             }
-            // on recupere les informations une fois le poste envoyer pour dire a l'utilisateur a bien envoyer son poste 
+            // Message d'erreur ou si tous est OK 
             if (isset($_REQUEST['poste']) && $_REQUEST['poste'] == 'OK') {
                 echo '!!! Votre poste a bien ete envoyer !!! ';
             }else if (isset($_REQUEST['poste']) && $_REQUEST['poste'] == 'null') {
@@ -58,7 +59,6 @@
             //requete permettant d'afficher tous les postes du plus recent au plus vieux 
             try
             {
-                include 'include.php';
                 $sql = "SELECT post.Id_post AS Id_image , id_utilisateur , Libelle_Image , post_date , Commentaire , Titre , login_passeword.Identifiant AS Identifiant FROM post INNER JOIN login_passeword ON post.id_utilisateur = login_passeword.Id_Login ORDER BY post_date DESC";
                 // Préparation de la requête avec les marqueurs
                 $resultat = $base->prepare($sql);
@@ -69,8 +69,8 @@
                         echo "<h3>".$ligne["Titre"]."</h3>";
                         echo "<h4>@".$ligne["Identifiant"]."</h4>";
                         echo "<p>".$ligne["Commentaire"]."</p>";
-                        echo "<p><i>".$ligne["post_date"]."</i></p>";
                         echo "<img src='./Image/".$ligne["Id_image"].$ligne["Libelle_Image"]."'></img>";
+                        echo "<p><i>".$ligne["post_date"]."</i></p>";
                     if (isset($_SESSION["id_personne"])) {
                         if ($ligne['id_utilisateur'] == $_SESSION["id_personne"]) {
                             echo '<form action="modif.php" method="POST" name="formulaire">';

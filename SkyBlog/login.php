@@ -9,13 +9,14 @@
     <!-- Formulaire de connexion -->
     <form action="verif_login.php" method="POST" name="formulaire">
         <input type="text" name="Identifiant" placeholder="Identifiant" />
-        <input type="passeword" name="passeword" placeholder="Mot De Passe"/>
+        <input type="password" name="passeword" placeholder="Mot De Passe"/>
         <button type="submit" name="ok" value="envoyer"> Envoyer </button>
         <p><a href="index.php">Regardez sans se connecter</a></p>
     </form>
     <?php
     session_start();
     session_destroy();
+    //si il y a une session existante je la detruit pour etre sur de ne pas en avoir plusieurs et que ca creer des conflits
     // si l'identifiant est incorrect afficher le message "identifiant incorrect"
     if (isset($_REQUEST['Identifiant'])) {
         if ($_REQUEST['Identifiant'] == "incorrect") {
