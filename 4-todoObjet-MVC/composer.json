@@ -1,0 +1,15 @@
+{
+    "name": "fdupin/4-todo-objet-mvc",
+    "authors": [
+        {
+            "name": "Florian-Du",
+            "email": "floflo.dupin@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Todo\\": "src/"
+        }
+    }
+}

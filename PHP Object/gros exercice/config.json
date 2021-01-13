@@ -1,0 +1,49 @@
+{
+  "config": {
+    "chemin": "./Image/",
+    "dbname": "skyblog",
+    "username": "root",
+    "passwd": "",
+    "mysql": "host=127.0.0.1"
+  },
+  "langue": {
+    "FR": {
+      "h1_menu": "Votre fil d'actualité",
+      "h1_connexion": "Se connecter",
+      "connectez": "Connecter en tant que :",
+      "ajoutez": "Ajouter un poste",
+      "deconnexion": "Se déconnecter",
+      "connexion": "Se connecter",
+      "modification": "Modifier",
+      "supprimer": "Supprimer",
+      "Identifiant": "Identifiant",
+      "MotDePasse": "Mot de passe",
+      "ConfirmerMotDePasse": "Confirmer le mot de passe",
+      "VoirSansConnexion": "Voir le fil d'actualité sans se connecter",
+      "enregistrer": "S'enrengistrer",
+      "insertion": "Insertion",
+      "titre": "Titre",
+      "commentaire": "Commentaire",
+      "retourner": "Retourner au fil d'actualité"
+    },
+    "EN": {
+      "h1_menu": "Your news feed",
+      "h1_connexion": "LogIn",
+      "connectez": "Connect as :",
+      "ajoutez": "Add a post",
+      "deconnexion": "Sign out",
+      "connexion": "Log In",
+      "modification": "Edit",
+      "supprimer": "Remove",
+      "Identifiant": "Username",
+      "MotDePasse": "Password",
+      "ConfirmerMotDePasse": "Confirm the password",
+      "VoirSansConnexion": "View the news feed without logging in",
+      "enregistrer": "register",
+      "insertion": "Insertion",
+      "titre": "Title",
+      "commentaire": "Comment",
+      "retourner": "Return to the news feed"
+    }
+  }
+}

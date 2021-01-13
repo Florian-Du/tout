@@ -23,7 +23,6 @@
                         
                         header("Location:./index.php?poste=OK");
                         $resultat->closeCursor();
-                        //header("Location:./index.php?poste=OK");
                     }
                     catch(Exception $e)
                     {
