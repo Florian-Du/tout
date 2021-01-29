@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eval algo</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        var Alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        var lettre = ["B","A","C"];
+        var decalage = 4;
+        var position = 0;
+        for (let i = 0; i < lettre.length; i++) {
+            var j = 0;
+            while (lettre[i] !== Alphabet[j]) {
+                position = j;
+                console.log(j);
+                j++;
+            }
+            console.log(position);
+            console.log(lettre);
+            lettre[i] = Alphabet[position + decalage];
+            console.log(lettre);
+        }
+        
+    </script>
+</html>

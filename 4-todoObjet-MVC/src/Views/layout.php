@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <a href="/" class="logo">LOGO</a>
+            <a href="/" class="logo"></a>
             <?php
                 if (!isset($_SESSION["user"]["username"])) {
                     ?>

@@ -46,7 +46,9 @@ nav a.logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-image: url("auchan.png");
+    background-size: cover;
+    background-position: center;
     padding: 5px;
     width: 60px;
     height: 60px;
